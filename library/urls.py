@@ -22,5 +22,6 @@ urlpatterns = [
     path('', views.loginUser, name="login"),
     path('reservation', views.reservation, name="reservation"),
     path('delete/<str:table_number>', views.delete, name='delete'),
-    path('create/<str:table_number>', views.create, name='create')
+    path('create/<str:table_number>', views.create, name='create'),
+    path('session/<str:visitor_id>', views.session, name='session')
 ]
