@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.loginUser, name="login"),
     path('reservation', views.reservation, name="reservation"),
-    path('delete/<str:table_id>', views.delete, name='delete')
+    path('delete/<str:table_number>', views.delete, name='delete'),
+    path('create/<str:table_number>', views.create, name='create')
 ]

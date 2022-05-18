@@ -36,10 +36,14 @@
         <div class="brand-name"><a href="/">LibraryApp</a></div>
         <div class="table-changer-wrapper">
           <div class="table-changer-item">
-            <a class="add-table" href="#">Masa Ekle</a>
+            <a class="add-table" href="/create/{{max_rating}}" type="submit"
+              >Masa Ekle</a
+            >
           </div>
           <div class="table-changer-item">
-            <a class="remove-table" href="/delete/{{%max_rating%}}" type="submit">Masa Çıkart</a>
+            <a class="remove-table" href="/delete/{{max_rating}}" type="submit"
+              >Masa Çıkart</a
+            >
           </div>
         </div>
       </div>
@@ -66,14 +70,49 @@
               <div class="col-md-4">
                 <div class="table-number-header">{{i.table_number}}</div>
                 <div class="border-box">
+                  {% if i.left_side == 1 and i.right_side == 1 %}
                   <a href="#">
                     <img src="../static/images/ok_sign.png" alt="left-of-table"
+                  /></a>
+                  <a href="#">
+                    <img
+                      src="../static/images/ok_sign.png"
+                      alt="right-of-table"
+                  /></a>
+                  {% elif i.left_side == 1 and i.right_side == 0 %}
+                  <a href="#">
+                    <img
+                      src="../static/images/ok_sign.png"
+                      alt="right-of-table"
                   /></a>
                   <a href="#">
                     <img
                       src="../static/images/nok_sign.png"
                       alt="right-of-table"
                   /></a>
+                  {% elif i.left_side == 0 and i.right_side == 1 %}
+                  <a href="#">
+                    <img
+                      src="../static/images/nok_sign.png"
+                      alt="right-of-table"
+                  /></a>
+                  <a href="#">
+                    <img
+                      src="../static/images/ok_sign.png"
+                      alt="right-of-table"
+                  /></a>
+                  {% elif i.left_side == 0 and i.right_side == 0 %}
+                  <a href="#">
+                    <img
+                      src="../static/images/nok_sign.png"
+                      alt="right-of-table"
+                  /></a>
+                  <a href="#">
+                    <img
+                      src="../static/images/nok_sign.png"
+                      alt="right-of-table"
+                  /></a>
+                  {% endif %}
                 </div>
               </div>
               {% endfor %}

@@ -8,18 +8,31 @@ def loginUser(request):
 
 def reservation(request):
     allList = table_inventory.objects.all()
+    max_rating = table_inventory.objects.aggregate(Max('table_number')).get('table_number__max')
     return render(request, 'reservation.html', {
         'allList': allList,
+        'max_rating': max_rating
 
     })
 
-def delete(request, table_id):
-    deleteRecord = table_inventory.objects.filter(table_id = table_id)
+def delete(request, table_number):
+    deleteRecord = table_inventory.objects.filter(table_number = table_number)
     deleteRecord.delete()
-    max_rating = table_inventory.objects.aggregate(Max('table_number')).get('table_number__max')
-    print(max_rating)
     context = {
-        'deleteRecord': deleteRecord,
-        'max_rating': max_rating
+        'deleteRecord': deleteRecord
     }
-    return redirect('reservation', context)
+    return redirect('reservation')
+
+def create(request, table_number):
+    addRecord = table_inventory.objects.filter(table_number = table_number)
+    max_rating = table_inventory.objects.aggregate(Max('table_number')).get('table_number__max')
+    max_rating +=1
+    addRecord.create(
+        table_number = max_rating,
+        left_side = 0,
+        right_side = 0
+        )
+    context = {
+        'addRecord': addRecord
+    }
+    return redirect('reservation')
