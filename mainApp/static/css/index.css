@@ -1,0 +1,22 @@
+body {
+    font-family: "Inika", sans-serif;
+  }
+
+.header {
+    background-color: blue;
+    font-family: "Italiana", sans-serif;
+    height: 35vh;
+}
+
+.form-wrapper {
+    margin-top: 2%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.brand-name {
+    color: white;
+    font-size: 86px;
+    text-align: center;
+    align-items: center;
+}
