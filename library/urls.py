@@ -19,5 +19,7 @@ from mainApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.loginUser, name="login")
+    path('', views.loginUser, name="login"),
+    path('reservation', views.reservation, name="reservation"),
+    path('delete/<str:table_id>', views.delete, name='delete')
 ]

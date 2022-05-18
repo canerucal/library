@@ -1,22 +1,56 @@
 body {
-    font-family: "Inika", sans-serif;
-  }
+  font-family: "Inika", sans-serif;
+}
 
 .header {
-    background-color: blue;
-    font-family: "Italiana", sans-serif;
-    height: 35vh;
+  background-color: #3ac9af;
+  height: 35vh;
+  align-items: center;
+  text-align: center;
+  display: flex;
 }
 
 .form-wrapper {
-    margin-top: 2%;
-    margin-left: 30%;
-    margin-right: 30%;
+  margin-top: 2%;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
 .brand-name {
-    color: white;
-    font-size: 86px;
+  color: white;
+  font-size: 86px;
+  text-align: center;
+  margin: 0 auto;
+  font-family: "Italiana", sans-serif;
+}
+
+.form-control {
+    border-radius: 20px;
+}
+
+.form-label {
+    margin-left: 1%;
+}
+
+.btn-primary {
     text-align: center;
     align-items: center;
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 2%;
+    background-color: #3ac9af;
+    border-color: #3ac9af;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+

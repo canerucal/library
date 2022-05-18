@@ -1,0 +1,90 @@
+body {
+  font-family: "Inika", sans-serif;
+}
+
+.main-container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-container {
+  background-color: #3ac9af;
+  width: 25vw;
+  height: 250vh;
+  font-family: "Italiana", sans-serif;
+}
+
+.right-container {
+  width: 75vw;
+  height: 100vh;
+}
+
+.brand-name {
+  text-align: center;
+  margin-top: 3%;
+  font-size: 60px;
+  width: auto;
+}
+
+.brand-name > a {
+  text-decoration: none;
+  color: white;
+}
+
+.brand-name > a:hover,
+.table-changer-item > a:hover {
+  color: #1c2aaa;
+}
+
+.table-changer-wrapper {
+  margin-top: 5%;
+  text-align: center;
+  font-size: 36px;
+  align-items: center;
+  margin-top: 50%;
+  margin-bottom: 50%;
+}
+
+.table-changer-item {
+  margin-top: 10%;
+  color: white;
+  text-decoration: none;
+}
+
+.table-changer-item > a {
+  color: white;
+  text-decoration: none;
+}
+
+.logged-in-user {
+  text-align: right;
+  margin-right: 2%;
+  margin-top: 2%;
+}
+
+.profile-picture {
+  height: auto;
+}
+
+.table-wrapper {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.col-md-4 {
+  text-align: center;
+  margin-top: 7%;
+}
+
+.border-box {
+  border: 2px solid #9747ff;
+  border-radius: 15px;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.table-number-header {
+    font-size: 32px;
+}

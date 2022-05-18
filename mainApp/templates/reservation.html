@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.7.0/htmx.min.js"
+      integrity="sha512-etqA0KankuxrlSeZDYycQBY/D/KWZn0YZjlsjAo7kCEBTy1gg+DwmR6icxtOpqDBOzm2P00/lSIXEu7K+zvNsg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/reservation.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Italiana&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inika&display=swap"
+      rel="stylesheet"
+    />
+    <title>Library App | Rezervasyon</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="left-container">
+        <div class="brand-name"><a href="/">LibraryApp</a></div>
+        <div class="table-changer-wrapper">
+          <div class="table-changer-item">
+            <a class="add-table" href="#">Masa Ekle</a>
+          </div>
+          <div class="table-changer-item">
+            <a class="remove-table" href="/delete/{{%max_rating%}}" type="submit">Masa Çıkart</a>
+          </div>
+        </div>
+      </div>
+      <div class="right-container">
+        <div class="logged-in-user">
+          <button
+            type="button"
+            class="btn"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            title="Tooltip on bottom"
+          >
+            <img
+              class="profile-picture"
+              src="../static/images/profile_pic.png"
+              alt="profile_pic"
+            />
+          </button>
+        </div>
+        <div class="table-wrapper">
+          <div class="container">
+            <div class="row">
+              {% for i in allList %}
+              <div class="col-md-4">
+                <div class="table-number-header">{{i.table_number}}</div>
+                <div class="border-box">
+                  <a href="#">
+                    <img src="../static/images/ok_sign.png" alt="left-of-table"
+                  /></a>
+                  <a href="#">
+                    <img
+                      src="../static/images/nok_sign.png"
+                      alt="right-of-table"
+                  /></a>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
