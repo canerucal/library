@@ -45,36 +45,25 @@
       <form class="login-form" method="post">
         {% csrf_token %}
         <div class="mb-3">
-          <label for="isim" class="form-label"
-            >İsim</label
+          <label for="username" class="form-label"
+            >Kullanıcı Adı</label
           >
           <input
             type="text"
-            name="users_adi"
+            name="username"
             class="form-control"
-            id="isim"
+            id="username"
           />
         </div>
         <div class="mb-3">
-            <label for="soyisim" class="form-label"
-              >Soyisim</label
+            <label for="pass" class="form-label"
+              >Parola</label
             >
             <input
-              type="text"
-              name="users_soyadi"
+              type="password"
+              name="password"
               class="form-control"
-              id="soyisim"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="calisan_no" class="form-label"
-              >Çalışan No</label
-            >
-            <input
-              type="number"
-              name="employee_id"
-              class="form-control"
-              id="calisan_no"
+              id="pass"
             />
           </div>
           <button type="submit" class="btn btn-primary login-btn">

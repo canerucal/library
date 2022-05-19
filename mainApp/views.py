@@ -1,7 +1,7 @@
-from turtle import right
 from django.shortcuts import render, redirect
 from .models import table_inventory, visitor
 from django.db.models import Max
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def loginUser(request):
@@ -61,3 +61,16 @@ def createSession(request, visitor_id):
     }
     return redirect('reservation')
 
+def loginUser(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username = username, password = password)
+        if user is not None:
+            login(request, user)
+            return redirect('reservation')
+        else:
+            return redirect('login')
+
+    else:
+        return render(request, 'index.html')
