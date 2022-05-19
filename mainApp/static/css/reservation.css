@@ -86,5 +86,16 @@ body {
 }
 
 .table-number-header {
-    font-size: 32px;
+  font-size: 32px;
+}
+
+.btn-danger {
+  background-color: #3ac9af;
+  color: white;
+  border-color: #3ac9af;
+}
+
+.btn-danger:hover{
+  background-color: #1c2aaa;
+  border-color: #1c2aaa;
 }
