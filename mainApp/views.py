@@ -1,3 +1,4 @@
+from turtle import right
 from django.shortcuts import render, redirect
 from .models import table_inventory, visitor
 from django.db.models import Max
@@ -8,11 +9,15 @@ def loginUser(request):
 
 def reservation(request):
     allList = table_inventory.objects.all()
+    allSession = visitor.objects.all()
     max_rating = table_inventory.objects.aggregate(Max('table_number')).get('table_number__max')
-
+    visitor_no = visitor.objects.aggregate(Max('visitor_id')).get('visitor_id__max')
+    visitor_no +=1
     return render(request, 'reservation.html', {
         'allList': allList,
-        'max_rating': max_rating
+        'max_rating': max_rating,
+        'visitor_no': visitor_no,
+        'allSession': allSession
     })
 
 def delete(request, table_number):
@@ -38,11 +43,21 @@ def create(request, table_number):
     }
     return redirect('reservation')
 
-def session(request, visitor_id):
+def createSession(request, visitor_id):
     addSession = visitor.objects.filter(visitor_id = visitor_id)
+    if request.method == "POST":
+        taken_name = request.POST.get('taken_name')
+        taken_surname = request.POST.get('taken_surname')
+        taken_time = request.POST.get('taken_time')
+
     addSession.create(
-        visitor_id = taken_id,
         visitor_name = taken_name,
         visitor_surname = taken_surname,
-        time = taken_time
+        res_time = taken_time
     )
+
+    context = {
+    'addSession': addSession
+    }
+    return redirect('reservation')
+

@@ -29,14 +29,14 @@
       rel="stylesheet"
     />
     <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-    crossorigin="anonymous"
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+      crossorigin="anonymous"
     ></script>
     <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-    crossorigin="anonymous"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Library App | Rezervasyon</title>
@@ -96,13 +96,21 @@
                       src="../static/images/ok_sign.png"
                       alt="right-of-table"
                   /></a>
-                  <a class="btn" data-bs-toggle="modal" data-bs-target="#createRecordModal">
+                  <a
+                    class="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createRecordModal-{{forloop.counter}}"
+                  >
                     <img
                       src="../static/images/nok_sign.png"
                       alt="right-of-table"
                   /></a>
                   {% elif i.left_side == 0 and i.right_side == 1 %}
-                  <a class="btn" data-bs-toggle="modal" data-bs-target="#createRecordModal">
+                  <a
+                    class="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createRecordModal-{{forloop.counter}}"
+                  >
                     <img
                       src="../static/images/nok_sign.png"
                       alt="right-of-table"
@@ -113,12 +121,20 @@
                       alt="right-of-table"
                   /></a>
                   {% elif i.left_side == 0 and i.right_side == 0 %}
-                  <a class="btn" data-bs-toggle="modal" data-bs-target="#createRecordModal">
+                  <a
+                    class="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createRecordModal-{{forloop.counter}}"
+                  >
                     <img
                       src="../static/images/nok_sign.png"
                       alt="right-of-table"
                   /></a>
-                  <a class="btn" data-bs-toggle="modal" data-bs-target="#createRecordModal">
+                  <a
+                    class="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createRecordModal-{{forloop.counter}}"
+                  >
                     <img
                       src="../static/images/nok_sign.png"
                       alt="right-of-table"
@@ -133,35 +149,49 @@
       </div>
     </div>
     <!-- Create Modal HTML -->
-    <div id="createRecordModal" class="modal fade">
+    {% for k in allSession %}
+    {% for i in allList %}
+    <div id="createRecordModal-{{forloop.counter}}" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form action="/create/{{i.visitor_id}}" method="post">
+          <form method="POST" action="/session/{{k.visitor_id}}">
             {% csrf_token %}
             <div class="modal-header">
-              <h4 class="modal-title">Kaydı Güncelle</h4>
+              <h4 class="modal-title" name="taken_table">Masa {{i.table_number}}</h4>
               <button
                 type="button"
                 class="btn-close btn-close-white"
                 data-bs-dismiss="modal"
                 aria-hidden="Close"
-              >
-              </button>
+              ></button>
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label>ID</label>
+                <label>İsim</label>
                 <input
-                  name = "visitor_id"
-                  value="{{i.visitor_id}}"
-                  type="number"
+                  name="taken_name"
+                  type="text"
                   class="form-control"
                   required
                 />
               </div>
               <div class="form-group">
-                <label>Miktar</label>
-                <input name="amount" value="deneme" type="number" class="form-control" required />
+                <label>Soyisim</label>
+                <input
+                  name="taken_surname"
+                  type="text"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Rezervasyon Zamanı</label>
+                <input
+                  name="taken_time"
+                  type="time"
+                  class="form-control"
+                  required
+                />
               </div>
             </div>
             <div class="modal-footer">
@@ -170,13 +200,16 @@
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-              >İptal
+              >
+                İptal
               </button>
-              <input type="submit" class="btn btn-info" value="Güncelle" />
+              <button type="submit" class="btn btn-danger">Kaydet</button>
             </div>
           </form>
         </div>
       </div>
     </div>
+    {% endfor %}
+    {% endfor %}
   </body>
 </html>

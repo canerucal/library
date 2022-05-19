@@ -24,3 +24,14 @@ class visitor(models.Model):
     
     def __str__(self) -> str:
         return f"{self.visitor_id} {self.visitor_name} {self.visitor_surname} {self.res_time}"
+
+class users(models.Model):
+    employee_id = models.IntegerField(primary_key=True)
+    user_name = models.CharField(max_length=20)
+    user_surname = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = 'users'
+
+    def __str__(self) -> str:
+        return f"{self.employee_id} {self.user_name} {self.user_surname}"
