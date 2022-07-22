@@ -23,6 +23,10 @@ Django Web Framework, Python, HTML, CSS and JS.
 
 `pip install -r requirements.txt`
 
+`.env file must be created in main project folder. And SECRET_KEY, DB_NAME, DB_PASSWORD values must be defined. Otherwise it won't work`
+
+`Another solution is you can modify settings.py file. But it is not recommended because of security issues.`
+
 `python manage.py makemigrations`
 
 `python manage.py migrate`
