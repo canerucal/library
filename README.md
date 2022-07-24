@@ -17,7 +17,7 @@ Django Web Framework, Python, HTML, CSS and JS.
 
 `cd mainApp`
 
-`python3 -m venv venv`
+`python3 -m venv env`
 
 `source env/bin/activate`
 
